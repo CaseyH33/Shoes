@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>Shoes and Stores</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Stores</h1>
+
+            {% if stores is not empty %}
+                <h3>List of all stores:</h3>
+                <h6>Click on a store to see what brands they carry!</h6>
+                <ul>
+                    {% for store in stores %}
+                        <li><h4><strong><a href="/stores/{{ store.getId }}">{{ store.getName }}</a></strong></h4></li>
+                        <ul>
+                            <li>{{ store.getPhoneNumber }}</li>
+                            <li>{{ store.getAddress }}</li>
+                        </ul>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <h3>There are no stores yet!</h3>
+            {% endif %}
+
+            <form action="/stores_add_form">
+                <button type="submit" class="btn btn-info">Add New Store</button>
+            </form>
+
+            {% if form_check == true %}
+                <form action="/add_store" method="post">
+                    <div class="form-group">
+                        <label for="name">Store Name</label>
+                        <input id="name" name="name" class="form-control" type="text" placeholder="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone_number">Phone Number</label>
+                        <input id="phone_number" name="phone_number" class="form-control" type="text" placeholder="555-555-5555" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input id="address" name="address" class="form-control" type="text" placeholder="123 ABC Street" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+            {% endif %}
+
+            <form action="/">
+                <button type="submit" class="btn btn-primary">Home</button>
+            </form>
+        </div>
+    </body>
+</html>
