@@ -6,6 +6,10 @@
     <body>
         <div class="container">
             <h1>{{ store.getName }}</h1>
+            <ul>
+                <li><h4>{{ store.getPhoneNumber }}</h4></li>
+                <li><h4>{{ store.getAddress }}</h4></li>
+            </ul>
 
             {% if store_brands is not empty %}
                 <h3>List of brands available at {{ store.getName }}:</h3>

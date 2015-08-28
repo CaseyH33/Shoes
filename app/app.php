@@ -81,6 +81,25 @@
         return $app['twig']->render('store.html.twig', array('store' => $store, 'store_brands' => $store->getBrands(), 'all_brands' => Brand::getAll()));
     });
 
+    $app->get("/edit_store", function() use ($app) {
+        $store = Store::find($_GET['store_id']);
+        return $app['twig']->render('store_edit.html.twig', array('store' => $store));
+    });
+
+    $app->patch("/stores/{id}", function($id) use ($app) {
+        $name = $_POST['name'];
+        $phone_number = $_POST['phone_number'];
+        $address = $_POST['address'];
+        $store = Store::find($id);
+        $store->update($name, $phone_number, $address);
+        return $app['twig']->render('store.html.twig', array('store' => $store, 'store_brands' => $store->getBrands(), 'all_brands' => Brand::getAll()));
+    });
+
+    $app->delete("/stores/{id}", function ($id) use ($app) {
+        $store = Store::find($id);
+        $store->delete();
+        return $app['twig']->render('stores.html.twig', array('stores' => Store::getAll(), 'form_check' => false));
+    });
 
     return $app;
 
