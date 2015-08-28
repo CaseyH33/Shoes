@@ -55,6 +55,7 @@
 
         static function deleteAll()
         {
+            $GLOBALS['DB']->exec("DELETE FROM brands_stores;");
             $GLOBALS['DB']->exec("DELETE FROM brands;");
         }
     }
