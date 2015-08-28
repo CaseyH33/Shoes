@@ -27,6 +27,19 @@
             $this->id=$GLOBALS['DB']->lastInsertId();
         }
 
+        static function find($search_id)
+        {
+            $found_brand = null;
+            $brands = Brand::getAll();
+            foreach($brands as $brand) {
+                $brand_id = $brand->getId();
+                if($brand_id == $search_id) {
+                    $found_brand = $brand;
+                }
+            }
+            return $found_brand;
+        }
+
         static function getAll()
         {
             $returned_brands = $GLOBALS['DB']->query("SELECT * FROM brands ORDER BY brand_name;");
