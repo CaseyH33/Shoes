@@ -9,7 +9,7 @@
 This application allows a user to input both stores and shoe brands.  Users are allowed to add a brand to a certain store, and add a store to a certain brand.  A store's information can  be edited, and the store can be deleted.  Also, each store can be clicked on, and a list of the associated brands will be shown. When clicking on brands, associated stores will be listed.
 
 ## Setup
-* If building database, follow these instructions in terminal (otherwise import the zipped database file):
+* If building database, follow these instructions in terminal (otherwise import the zipped database files):
 
     * To access MySQL:
         * /Applications/MAMP/Library/bin/mysql --host=localhost -uroot -proot
