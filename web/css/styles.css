@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    background-image: url("../img/Shoes.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    color: #99CCFF;
+    text-decoration: underline;
+}
+
+h3 {
+    color: #99CCFF;
+}
+
+a {
+    color: #CCCC00;
+}
+
+li {
+    color: #CCCC00;
+}

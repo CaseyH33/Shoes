@@ -2,6 +2,7 @@
     <head>
         <title>Shoes and Stores</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
         <div class="container">
@@ -29,9 +30,10 @@
                             <option value="{{ brand.getId }}">{{ brand.getBrandName }}</option>
                         {% endfor %}
                     </select>
+                    <br>
                 <button type="submit" class="btn btn-success">Submit</button>
             </form>
-
+            <br>
             <form action="/edit_store">
                 <input id="store_id" name="store_id" type="hidden" value="{{ store.getId }}">
                 <button type="submit" class="btn btn-info">Edit {{ store.getName }}</button>

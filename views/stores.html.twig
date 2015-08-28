@@ -2,6 +2,7 @@
     <head>
         <title>Shoes and Stores</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
         <div class="container">
@@ -9,14 +10,10 @@
 
             {% if stores is not empty %}
                 <h3>List of all stores:</h3>
-                <h6>Click on a store to see what brands they carry!</h6>
+                <h5>Click on a store to see what brands they carry!</h5>
                 <ul>
                     {% for store in stores %}
                         <li><h4><strong><a href="/stores/{{ store.getId }}">{{ store.getName }}</a></strong></h4></li>
-                        <ul>
-                            <li>{{ store.getPhoneNumber }}</li>
-                            <li>{{ store.getAddress }}</li>
-                        </ul>
                     {% endfor %}
                 </ul>
             {% else %}
@@ -44,6 +41,7 @@
                     <button type="submit" class="btn btn-success">Submit</button>
                 </form>
             {% endif %}
+            <br>
 
             <form action="/">
                 <button type="submit" class="btn btn-primary">Home</button>

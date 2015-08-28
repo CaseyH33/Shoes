@@ -2,6 +2,7 @@
     <head>
         <title>Shoes and Stores</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
         <div class="container">
@@ -9,7 +10,7 @@
 
             {% if brands is not empty %}
                 <h3>List of all brands:</h3>
-                <h6>Click on a brand to see where to buy it!</h6>
+                <h5>Click on a brand to see where to buy it!</h5>
                 <ul>
                     {% for brand in brands %}
                         <li><h4><strong><a href="/brands/{{ brand.getId }}">{{ brand.getBrandName }}</a></strong></h4></li>
@@ -32,7 +33,8 @@
                     <button type="submit" class="btn btn-success">Submit</button>
                 </form>
             {% endif %}
-            
+            <br>
+
             <form action="/">
                 <button type="submit" class="btn btn-primary">Home</button>
             </form>
