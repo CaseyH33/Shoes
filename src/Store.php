@@ -27,6 +27,19 @@
             $this->id=$GLOBALS['DB']->lastInsertId();
         }
 
+        static function find($search_id)
+        {
+            $found_store = null;
+            $stores = Store::getAll();
+            foreach($stores as $store) {
+                $store_id = $store->getId();
+                if($store_id == $search_id) {
+                    $found_store = $store;
+                }
+            }
+            return $found_store;
+        }
+
         static function getAll()
         {
             $returned_stores = $GLOBALS['DB']->query("SELECT * FROM stores ORDER BY name;");
