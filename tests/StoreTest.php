@@ -96,7 +96,17 @@
             $this->assertEquals($test_store, $result);
         }
 
+        function testUpdate()
+        {
+            $name = "Foot Locker";
+            $test_store = new Store($name);
+            $test_store->save();
 
+            $new_name = "Foot Locker Express";
+            $test_store->update($new_name);
+
+            $this->assertEquals($new_name, $test_store->getName());
+        }
     }
 
 ?>

@@ -16,6 +16,11 @@
             return $this->name;
         }
 
+        function setName($new_name)
+        {
+            $this->name = $new_name;
+        }
+
         function getId()
         {
             return $this->id;
@@ -25,6 +30,12 @@
         {
             $GLOBALS['DB']->exec("INSERT INTO stores (name) VALUES ('{$this->getName()}');");
             $this->id=$GLOBALS['DB']->lastInsertId();
+        }
+
+        function update($new_name)
+        {
+            $GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_name}' WHERE id = {$this->getId()};");
+            $this->setName($new_name);
         }
 
         static function find($search_id)
