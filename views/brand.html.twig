@@ -18,7 +18,7 @@
                 <h3>There are no stores yet!</h3>
             {% endif %}
 
-            <h3>Add {{ brand.getBrandName }} to a store:
+            <h3>Add {{ brand.getBrandName }} to a store:</h3>
             <form action="/brands/{{ brand.getId }}" method="post">
                 <select class="form-control" id="store_id" name="store_id">
                         {% for store in all_stores %}

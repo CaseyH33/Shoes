@@ -50,7 +50,8 @@
 
     $app->post("/brands/{id}", function($id) use ($app) {
         $brand = Brand::find($id);
-        $brand->addStore($_POST['store_id']);
+        $store = Store::find($_POST['store_id']);
+        $brand->addStore($store);
         return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'brand_stores' => $brand->getStores(), 'all_stores' => Store::getAll()));
     });
 
@@ -75,7 +76,8 @@
 
     $app->post("/stores/{id}", function($id) use ($app) {
         $store = Store::find($id);
-        $store->addBrand($_POST['brand_id']);
+        $brand = Brand::find($_POST['brand_id']);
+        $store->addBrand($brand);
         return $app['twig']->render('store.html.twig', array('store' => $store, 'store_brands' => $store->getBrands(), 'all_brands' => Brand::getAll()));
     });
 
