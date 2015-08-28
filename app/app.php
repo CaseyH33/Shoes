@@ -23,6 +23,26 @@
         return $app['twig']->render('index.html.twig');
     });
 
+    $app->get("/delete_all", function() use ($app) {
+        Brand::deleteAll();
+        Store::deleteAll();
+        return $app['twig']->render('index.html.twig');
+    });
+
+    $app->get("/brands", function() use($app) {
+        return $app['twig']->render('brands.html.twig', array('brands' => Brand::getAll(), 'form_check' => false));
+    });
+
+    $app->get("/brands_add_form", function() use($app) {
+        return $app['twig']->render('brands.html.twig', array('brands' => Brand::getAll(), 'form_check' => true));
+    });
+
+    $app->post("/add_brand", function() use ($app) {
+        $brand = new Brand($_POST['brand_name']);
+        $brand->save();
+        return $app['twig']->render('brands.html.twig', array('brands' => Brand::getAll(), 'form_check' => false));
+    }
+
 
     return $app;
 

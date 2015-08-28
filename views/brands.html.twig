@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>Shoes and Stores</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Shoe Brands</h1>
+
+            {% if brands is not empty %}
+                <h3>List of all brands:</h3>
+                <h6>Click on a brand to see where to buy it!</h6>
+                <ul>
+                    {% for brand in brands %}
+                        <li><h4><strong><a href="/brands/{{ brand.getId }}">{{ brand.getBrandName }}</a></strong></h4></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <h3>There are no brands yet!</h3>
+            {% endif %}
+
+            <form action="/brands_add_form">
+                <button type="submit" class="btn btn-info">Add New Brand</button>
+            </form>
+
+            {% if form_check == true %}
+                <form action="/add_brand" method="post">
+                    <div class="form-group">
+                        <label for="brand_name">Enter the name of the new brand</label>
+                        <input id="brand_name" name="brand_name" class="form-control" type="text" placeholder="Brand Name" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+            {% endif %}
+        </div>
+    </body>
+</html>
