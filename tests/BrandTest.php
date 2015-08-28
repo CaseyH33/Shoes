@@ -82,6 +82,43 @@
             $this->assertEquals($test_brand, $result);
         }
 
+        function testAddStore()
+        {
+            $brand_name = "Air Jordan";
+            $test_brand = new Brand($brand_name);
+            $test_brand->save();
+
+            $name = "Foot Locker";
+            $test_store = new Store($name);
+            $test_store->save();
+
+            $test_brand->addStore($test_store);
+            $result = $test_brand->getStores();
+
+            $this->assertEquals([$test_store], $result);
+        }
+
+        function testGetStores()
+        {
+            $brand_name = "Air Jordan";
+            $test_brand = new Brand($brand_name);
+            $test_brand->save();
+
+            $name = "Foot Locker";
+            $test_store = new Store($name);
+            $test_store->save();
+
+            $name2 = "Nike Outlet";
+            $test_store2 = new Store($name2);
+            $test_store2->save();
+
+            $test_brand->addStore($test_store);
+            $test_brand->addStore($test_store2);
+            $result = $test_brand->getStores();
+
+            $this->assertEquals([$test_store, $test_store2], $result);
+        }
+
     }
 
  ?>
