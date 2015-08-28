@@ -38,6 +38,11 @@
             $this->setName($new_name);
         }
 
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
+        }
+
         static function find($search_id)
         {
             $found_store = null;
