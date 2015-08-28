@@ -43,8 +43,10 @@
             $stores = array();
             foreach($returned_stores as $store) {
                 $name = $store['name'];
+                $phone_number = $store['phone_number'];
+                $address = $store['address'];
                 $id = $store['id'];
-                $new_store = new Store($name, $id);
+                $new_store = new Store($name, $phone_number, $address, $id);
                 array_push($stores, $new_store);
             }
             return $stores;

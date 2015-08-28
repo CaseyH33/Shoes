@@ -3,11 +3,15 @@
     class Store
     {
         private $name;
+        private $phone_number;
+        private $address;
         private $id;
 
-        function __construct($name, $id=null)
+        function __construct($name, $phone_number, $address, $id=null)
         {
             $this->name = $name;
+            $this->phone_number = $phone_number;
+            $this->address = $address;
             $this->id = $id;
         }
 
@@ -21,6 +25,26 @@
             $this->name = $new_name;
         }
 
+        function getPhoneNumber()
+        {
+            return $this->phone_number;
+        }
+
+        function setPhoneNumber($new_phone_number)
+        {
+            $this->phone_number = $new_phone_number;
+        }
+
+        function getAddress()
+        {
+            return $this->address;
+        }
+
+        function setAddress($new_address)
+        {
+            $this->address = $new_address;
+        }
+
         function getId()
         {
             return $this->id;
@@ -28,14 +52,16 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO stores (name) VALUES ('{$this->getName()}');");
+            $GLOBALS['DB']->exec("INSERT INTO stores (name, phone_number, address) VALUES ('{$this->getName()}', '{$this->getPhoneNumber()}', '{$this->getAddress()}');");
             $this->id=$GLOBALS['DB']->lastInsertId();
         }
 
-        function update($new_name)
+        function update($new_name, $new_phone_number, $new_address)
         {
-            $GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_name}' WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_name}', phone_number = '{$new_phone_number}', address = '{$new_address}' WHERE id = {$this->getId()};");
             $this->setName($new_name);
+            $this->setPhoneNumber($new_phone_number);
+            $this->setAddress($new_address);
         }
 
         function delete()
@@ -86,8 +112,10 @@
             $stores = array();
             foreach($returned_stores as $store) {
                 $name = $store['name'];
+                $phone_number = $store['phone_number'];
+                $address = $store['address'];
                 $id = $store['id'];
-                $new_store = new Store($name, $id);
+                $new_store = new Store($name, $phone_number, $address, $id);
                 array_push($stores, $new_store);
             }
             return $stores;

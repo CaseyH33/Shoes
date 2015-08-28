@@ -89,7 +89,9 @@
             $test_brand->save();
 
             $name = "Foot Locker";
-            $test_store = new Store($name);
+            $phone_number = "555-555-5555";
+            $address = "123 ABC Street";
+            $test_store = new Store($name, $phone_number, $address);
             $test_store->save();
 
             $test_brand->addStore($test_store);
@@ -105,11 +107,15 @@
             $test_brand->save();
 
             $name = "Foot Locker";
-            $test_store = new Store($name);
+            $phone_number = "555-555-5555";
+            $address = "123 ABC Street";
+            $test_store = new Store($name, $phone_number, $address);
             $test_store->save();
 
             $name2 = "Nike Outlet";
-            $test_store2 = new Store($name2);
+            $phone_number2 = "444-444-4444";
+            $address2 = "456 CBA Ave.";
+            $test_store2 = new Store($name2, $phone_number2, $address2);
             $test_store2->save();
 
             $test_brand->addStore($test_store);

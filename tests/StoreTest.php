@@ -24,17 +24,45 @@
         function testGetName()
         {
             $name = "Foot Locker";
-            $test_store = new Store($name);
+            $phone_number = "555-555-5555";
+            $address = "123 ABC Street";
+            $test_store = new Store($name, $phone_number, $address);
 
             $result = $test_store->getName();
 
             $this->assertEquals($name, $result);
         }
 
+        function testGetPhoneNumber()
+        {
+            $name = "Foot Locker";
+            $phone_number = "555-555-5555";
+            $address = "123 ABC Street";
+            $test_store = new Store($name, $phone_number, $address);
+
+            $result = $test_store->getPhoneNumber();
+
+            $this->assertEquals($phone_number, $result);
+        }
+
+        function testGetAddress()
+        {
+            $name = "Foot Locker";
+            $phone_number = "555-555-5555";
+            $address = "123 ABC Street";
+            $test_store = new Store($name, $phone_number, $address);
+
+            $result = $test_store->getAddress();
+
+            $this->assertEquals($address, $result);
+        }
+
         function testGetId()
         {
             $name = "Foot Locker";
-            $test_store = new Store($name);
+            $phone_number = "555-555-5555";
+            $address = "123 ABC Street";
+            $test_store = new Store($name, $phone_number, $address);
 
             $result = $test_store->getId();
 
@@ -44,7 +72,9 @@
         function testSave()
         {
             $name = "Foot Locker";
-            $test_store = new Store($name);
+            $phone_number = "555-555-5555";
+            $address = "123 ABC Street";
+            $test_store = new Store($name, $phone_number, $address);
             $test_store->save();
 
             $result = Store::getAll();
@@ -55,11 +85,15 @@
         function testGetAll()
         {
             $name = "Foot Locker";
-            $test_store = new Store($name);
+            $phone_number = "555-555-5555";
+            $address = "123 ABC Street";
+            $test_store = new Store($name, $phone_number, $address);
             $test_store->save();
 
             $name2 = "Nike Outlet";
-            $test_store2 = new Store($name2);
+            $phone_number2 = "444-444-4444";
+            $address2 = "456 CBA Ave.";
+            $test_store2 = new Store($name2, $phone_number2, $address2);
             $test_store2->save();
 
             $result = Store::getAll();
@@ -70,11 +104,15 @@
         function testDeleteAll()
         {
             $name = "Foot Locker";
-            $test_store = new Store($name);
+            $phone_number = "555-555-5555";
+            $address = "123 ABC Street";
+            $test_store = new Store($name, $phone_number, $address);
             $test_store->save();
 
             $name2 = "Nike Outlet";
-            $test_store2 = new Store($name2);
+            $phone_number2 = "444-444-4444";
+            $address2 = "456 CBA Ave.";
+            $test_store2 = new Store($name2, $phone_number2, $address2);
             $test_store2->save();
 
             Store::deleteAll();
@@ -86,11 +124,15 @@
         function testFind()
         {
             $name = "Foot Locker";
-            $test_store = new Store($name);
+            $phone_number = "555-555-5555";
+            $address = "123 ABC Street";
+            $test_store = new Store($name, $phone_number, $address);
             $test_store->save();
 
             $name2 = "Nike Outlet";
-            $test_store2 = new Store($name2);
+            $phone_number2 = "444-444-4444";
+            $address2 = "456 CBA Ave.";
+            $test_store2 = new Store($name2, $phone_number2, $address2);
             $test_store2->save();
 
             $result = Store::find($test_store->getId());
@@ -101,23 +143,33 @@
         function testUpdate()
         {
             $name = "Foot Locker";
-            $test_store = new Store($name);
+            $phone_number = "555-555-5555";
+            $address = "123 ABC Street";
+            $test_store = new Store($name, $phone_number, $address);
             $test_store->save();
 
             $new_name = "Foot Locker Express";
-            $test_store->update($new_name);
+            $new_phone_number = "333-333-333";
+            $new_address = "789 XYZ Court";
+            $updated_store = new Store($new_name, $new_phone_number, $new_address, $test_store->getId());
 
-            $this->assertEquals($new_name, $test_store->getName());
+            $test_store->update($new_name, $new_phone_number, $new_address);
+
+            $this->assertEquals($updated_store, $test_store);
         }
 
         function testDelete()
         {
             $name = "Foot Locker";
-            $test_store = new Store($name);
+            $phone_number = "555-555-5555";
+            $address = "123 ABC Street";
+            $test_store = new Store($name, $phone_number, $address);
             $test_store->save();
 
             $name2 = "Nike Outlet";
-            $test_store2 = new Store($name2);
+            $phone_number2 = "444-444-4444";
+            $address2 = "456 CBA Ave.";
+            $test_store2 = new Store($name2, $phone_number2, $address2);
             $test_store2->save();
 
             $test_store->delete();
@@ -128,7 +180,9 @@
         function testAddBrand()
         {
             $name = "Foot Locker";
-            $test_store = new Store($name);
+            $phone_number = "555-555-5555";
+            $address = "123 ABC Street";
+            $test_store = new Store($name, $phone_number, $address);
             $test_store->save();
 
             $brand_name = "Air Jordan";
@@ -144,7 +198,9 @@
         function testGetBrands()
         {
             $name = "Foot Locker";
-            $test_store = new Store($name);
+            $phone_number = "555-555-5555";
+            $address = "123 ABC Street";
+            $test_store = new Store($name, $phone_number, $address);
             $test_store->save();
 
             $brand_name = "Air Jordan";
